@@ -1,7 +1,7 @@
 package controllers
 
 import play.api.mvc.Controller
-import models.{Pic, Scenic, Area}
+import models.{City, Pic, Scenic, Area}
 import play.api.mvc.Action
 import play.api.libs.json._
 /**
@@ -16,6 +16,8 @@ object ScenicController extends Controller {
 
   implicit val picFormat = Json.format[Pic]
 
+  implicit val cityFormat = Json.format[City]
+
   def listAreas = Action {
     implicit request =>
       val list = Area.allAreas
@@ -23,9 +25,23 @@ object ScenicController extends Controller {
       Ok(json).as("application/json")
   }
 
+  def listCities = Action {
+    implicit request =>
+      val list = City.allCities
+      val json = Json.toJson(list)
+      Ok(json).as("application/json")
+  }
+
   def listScenics(id:Int) = Action {
     implicit request =>
       val list = Scenic.allScenic(id)
+      val json = Json.toJson(list)
+      Ok(json).as("application/json")
+  }
+
+  def listScenicsByType(id:Int) = Action {
+    implicit request =>
+      val list = Scenic.scenicByType(id)
       val json = Json.toJson(list)
       Ok(json).as("application/json")
   }

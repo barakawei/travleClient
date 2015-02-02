@@ -10,7 +10,10 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 GET   /areas             controllers.ScenicController.listAreas
 
+GET   /cities             controllers.ScenicController.listCities
+
 GET   /scenics/:id       controllers.ScenicController.listScenics(id:Int)
 
 GET   /scenics/:id/pics      controllers.ScenicController.listPics(id:Int)
 
+GET   /scenics/type/:id      controllers.ScenicController.listScenicsByType(id:Int)
