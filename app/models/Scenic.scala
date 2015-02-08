@@ -15,7 +15,7 @@ object Scenic {
   def allScenic(id:Int):Seq[Scenic]= {
     var sql = "select * from scenic where city_id=? and enable = 1"
     if (id == 5) { //热门
-      sql= "select * from scenic where heritage=1 and sight=1 and culture=1 and enable = 1"
+      sql= "select * from scenic where enable = 1"
       db.withSession{
         implicit session=>
           Q.queryNA[Scenic](sql).list
