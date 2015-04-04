@@ -5,12 +5,12 @@ import scala.slick.jdbc.{GetResult, StaticQuery => Q}
 /**
  * Created by baraka on 15-1-18.
  */
-case class Scenic(id : Int,name:String,info:String,ticket:String,location:String,traffic:String,notice:String,cityId:Int,areaId:Int,url:String,urlLarge:String,enable:Int)
+case class Scenic(id : Int,name:String,info:String,ticket:String,location:String,traffic:String,notice:String,cityId:Int,areaId:Int,url:String,urlLarge:String,enable:Int,brief:String,yomi:String)
 
 object Scenic {
   private val db = MyDatabase.database
 
-  implicit val result = GetResult(r => Scenic(r.<<, r.<<, r.<<, r.<<,r.<<,r.<<,r.<<,r.<<,r.<<,r.<<,r.<<,r.<<))
+  implicit val result = GetResult(r => Scenic(r.<<, r.<<, r.<<, r.<<,r.<<,r.<<,r.<<,r.<<,r.<<,r.<<,r.<<,r.<<,r.<<,r.<<))
 
   def allScenic(id:Int):Seq[Scenic]= {
     var sql = "select * from scenic where city_id=? and enable = 1"
